@@ -1,4 +1,4 @@
-namespace ServerMess.Models
+namespace RFServerMess.Models
 {
     public class GameTagsModel
     {

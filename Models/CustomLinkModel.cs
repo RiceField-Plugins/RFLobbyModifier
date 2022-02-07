@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace ServerMess.Models
+namespace RFServerMess.Models
 {
     public class CustomLinkModel
     {

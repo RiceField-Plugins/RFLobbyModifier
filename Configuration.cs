@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
+using RFServerMess.Models;
 using Rocket.API;
-using ServerMess.Models;
 
-namespace ServerMess
+namespace RFServerMess
 {
     public class Configuration : IRocketPluginConfiguration
     {
@@ -118,7 +118,7 @@ namespace ServerMess
             BrowserDescriptionHint = "This is description hint in lobby";
             HideBrowserDescriptionFull = false;
             EditBrowserDescriptionFull = true;
-            BrowserDescriptionFullLines = new string[]
+            BrowserDescriptionFullLines = new[]
             {
                 "This is achieved with",
                 "RFServerMess",
@@ -126,7 +126,7 @@ namespace ServerMess
             };
             HideWorkshop = false;
             EditWorkshop = false;
-            WorkshopLines = new string[]
+            WorkshopLines = new[]
             {
                 "1",
                 "123",
@@ -134,7 +134,7 @@ namespace ServerMess
             };
             HideConfiguration = false;
             EditConfiguration = true;
-            ConfigurationLines = new string[]
+            ConfigurationLines = new[]
             {
                 "This.is=Config",
                 "Test.config=2",
@@ -142,7 +142,7 @@ namespace ServerMess
             };
             HidePlugins = false;
             EditPlugins = true;
-            PluginLines = new string[]
+            PluginLines = new[]
             {
                 "This is achieved with",
                 "RFServerMess",

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using SDG.Unturned;
 
-namespace ServerMess.Models
+namespace RFServerMess.Models
 {
     public class ServerModel
     {
