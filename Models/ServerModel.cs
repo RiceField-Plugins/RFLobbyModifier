@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using SDG.Unturned;
 
-namespace RFServerMess.Models
+namespace RFLobbyModifier.Models
 {
     public class ServerModel
     {
@@ -19,5 +19,10 @@ namespace RFServerMess.Models
         public string BrowserDescriptionFull { get; set; }
         public List<ulong> ServerWorkshopFileIDs { get; set; }
         public BrowserConfigData.Link[] CustomLinks { get; set; }
+
+        public ServerModel()
+        {
+            
+        }
     }
 }

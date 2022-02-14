@@ -1,163 +1,79 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
-using RFServerMess.Models;
+using RFLobbyModifier.Models;
 using Rocket.API;
 
-namespace RFServerMess
+namespace RFLobbyModifier
 {
     public class Configuration : IRocketPluginConfiguration
     {
         public bool Enabled;
         public bool RevertOnUnload;
-        public bool EditServerMaxPlayer;
-        public byte ServerMaxPlayer;
-        public bool EditServerName;
-        public string ServerName;
-        public bool EditServerPassword;
-        public string ServerPassword;
-        public bool EditServerMap;
-        public string ServerMap;
-        public bool EditServerVACSecure;
-        public bool ServerIsVACSecure;
-        public bool EditGameVersionPacked;
-        public uint GameVersionPacked;
-        public bool EditMapVersion;
-        public uint MapVersion;
-        public bool EditGameVersion;
-        public string GameVersion;
-        public bool EditIsPvP;
-        public bool IsPVP;
-        public bool EditHasCheats;
-        public bool HasCheats;
-        public bool EditMode;
-        public string Mode;
-        public bool EditPerspective;
-        public string Perspective;
-        public bool EditIsGold;
-        public bool IsGold;
-        public bool EditIsBattlEyeSecure;
-        public bool IsBattlEyeSecure;
-        public bool EditMonetization;
-        public string Monetization;
-        public bool EditNetTransport;
-        public string NetTransport;
-        public bool EditPluginFramework;
-        public string PluginFramework;
-        public bool EditDescriptionServerList;
-        public string DescriptionServerList;
-        public bool EditThumbnail;
-        public string Thumbnail;
-        public bool EditBrowserIcon;
-        public string BrowserIcon;
-        public bool EditBrowserDescriptionHint;
-        public string BrowserDescriptionHint;
-        public bool HideBrowserDescriptionFull;
-        public bool EditBrowserDescriptionFull;
-        public string[] BrowserDescriptionFullLines;
-        public bool HideWorkshop;
-        public bool EditWorkshop;
-        public string[] WorkshopLines;
-        public bool HideConfiguration;
-        public bool EditConfiguration;
-        public string[] ConfigurationLines;
-        public bool HidePlugins;
-        public bool EditPlugins;
-        public string[] PluginLines;
-        public bool HideCustomLinks;
-        public bool EditCustomLinks;
-        [XmlArrayItem("CustomLink")]
-        public List<CustomLinkModel> CustomLinkLines;
-        public bool HideRocket;
-        public bool IsVanilla;
+
+        public ConfigCommonSetting CommonSetting;
+        public ConfigAdvancedSetting AdvancedSetting;
 
         public void LoadDefaults()
         {
             Enabled = true;
             RevertOnUnload = true;
-            EditServerMaxPlayer = false;
-            ServerMaxPlayer = 24;
-            EditServerName = false;
-            ServerName = "Enter name";
-            EditServerPassword = false;
-            ServerPassword = "";
-            EditServerMap = false;
-            ServerMap = "PEI";
-            EditServerVACSecure = false;
-            ServerIsVACSecure = true;
-            EditGameVersionPacked = false;
-            GameVersionPacked = 123;
-            EditMapVersion = false;
-            MapVersion = 123;
-            EditGameVersion = false;
-            GameVersion = "test version";
-            EditIsPvP = false;
-            IsPVP = false;
-            EditHasCheats = false;
-            HasCheats = false;
-            EditMode = false;
-            Mode = "normal";
-            EditPerspective = false;
-            Perspective = "both";
-            EditIsGold = false;
-            IsGold = false;
-            EditIsBattlEyeSecure = false;
-            IsBattlEyeSecure = true;
-            EditMonetization = false;
-            Monetization = "any";
-            EditNetTransport = false;
-            NetTransport = "sns";
-            EditPluginFramework = false;
-            PluginFramework = "rm";
-            EditDescriptionServerList = false;
-            DescriptionServerList = "This is description in server list";
-            EditThumbnail = false;
-            Thumbnail = "url.com/image.jpg";
-            EditBrowserIcon = false;
-            BrowserIcon = "url.com/image.jpg";
-            EditBrowserDescriptionHint = false;
-            BrowserDescriptionHint = "This is description hint in lobby";
-            HideBrowserDescriptionFull = false;
-            EditBrowserDescriptionFull = true;
-            BrowserDescriptionFullLines = new[]
+            CommonSetting = new ConfigCommonSetting
             {
-                "This is achieved with",
-                "RFServerMess",
-                "v1.0.0"
+                BrowserDescription = new ConfigEntrySingleString(true, "<color=#00FFFF>Edited by RFLobbyModifier</color>"),
+                BrowserIcon = new ConfigEntrySingleString(false, "url.com/image.jpg"),
+                LobbyConfiguration = new ConfigEntryStringArrayHideable(false, true, new[]
+                {
+                    "This.is=RFLobbyModifier",
+                    "Test.config=69",
+                    "version.plugin=96"
+                }),
+                LobbyCustomLinks = new ConfigEntryCustomLink(false, true, new List<CustomLink>
+                {
+                    new CustomLink("Edited by RFLobbyModifier", "Testurl1.com"),
+                    new CustomLink("Edited by RFLobbyModifier", "Testurl2.com"),
+                    new CustomLink("Edited by RFLobbyModifier", "Testurl3.com"),
+                }),
+                LobbyDescriptionFull = new ConfigEntryStringArrayHideable(false, true, new[]
+                {
+                    "<color=white><size=25>Edited by</size></color>",
+                    "<color=#00FFFF><size=40>RFLobbyModifier</size></color>"
+                }),
+                LobbyDescriptionHint = new ConfigEntrySingleString(true, "<color=#00FFFF>Edited by RFLobbyModifier</color>"),
+                LobbyPlugins = new ConfigEntryStringArrayHideable(false, true, new[]
+                {
+                    "Edited by",
+                    "RFLobbyModifier"
+                }),
+                LobbyThumbnail = new ConfigEntrySingleString(false, "url.com/image.jpg")
             };
-            HideWorkshop = false;
-            EditWorkshop = false;
-            WorkshopLines = new[]
+            AdvancedSetting = new ConfigAdvancedSetting
             {
-                "1",
-                "123",
-                "321"
+                BattlEyeSecure = new ConfigEntrySingleBoolean(false, true),
+                GameVersion = new ConfigEntrySingleString(false, "imaginary version"),
+                GameVersionPacked = new ConfigEntrySingleUInt(false, 69),
+                HasCheats = new ConfigEntrySingleBoolean(false, false),
+                HideRocket = false,
+                IsVanilla = false,
+                MapVersion = new ConfigEntrySingleUInt(false, 69),
+                NetTransport = new ConfigEntrySingleString(false, "sns"),
+                PluginFramework = new ConfigEntrySingleString(false, "rm"),
+                ServerGold = new ConfigEntrySingleBoolean(false, false),
+                ServerMap = new ConfigEntrySingleString(false, "PEI"),
+                ServerMaxPlayer = new ConfigEntrySingleByte(false, 69),
+                ServerMode = new ConfigEntrySingleString(false, "normal"),
+                ServerMonetization = new ConfigEntrySingleString(false, "any"),
+                ServerName = new ConfigEntrySingleString(false, "RFLobbyModifier Server"),
+                ServerPassword = new ConfigEntrySingleString(false, "theworldisinyourhand"),
+                ServerPerspective = new ConfigEntrySingleString(false, "both"),
+                ServerPvP = new ConfigEntrySingleBoolean(false, true),
+                VACSecure = new ConfigEntrySingleBoolean(false, true),
+                Workshop = new ConfigEntryStringArrayHideable(false, false, new[]
+                {
+                    "1",
+                    "123",
+                    "321"
+                }),
             };
-            HideConfiguration = false;
-            EditConfiguration = true;
-            ConfigurationLines = new[]
-            {
-                "This.is=Config",
-                "Test.config=2",
-                "version.plugin=1"
-            };
-            HidePlugins = false;
-            EditPlugins = true;
-            PluginLines = new[]
-            {
-                "This is achieved with",
-                "RFServerMess",
-                "v1.0.0"
-            };
-            HideCustomLinks = false;
-            EditCustomLinks = true;
-            CustomLinkLines = new List<CustomLinkModel>
-            {
-                new CustomLinkModel("Test message1", "Testurl1.com"),
-                new CustomLinkModel("Test message2", "Testurl2.com"),
-                new CustomLinkModel("Test message3", "Testurl3.com"),
-            };
-            HideRocket = false;
-            IsVanilla = false;
         }
     }
 }

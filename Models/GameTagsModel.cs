@@ -1,4 +1,4 @@
-namespace RFServerMess.Models
+namespace RFLobbyModifier.Models
 {
     public class GameTagsModel
     {
@@ -13,5 +13,10 @@ namespace RFServerMess.Models
         public string Thumbnail { get; set; }
         public string NetTransport { get; set; }
         public string PluginFramework { get; set; }
+
+        public GameTagsModel()
+        {
+            
+        }
     }
 }
