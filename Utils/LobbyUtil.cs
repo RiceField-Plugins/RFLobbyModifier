@@ -406,6 +406,9 @@ namespace RFLobbyModifier.Utils
 
         internal static void RevertServer()
         {
+            if (!Level.isLoaded)
+                return;
+            
             try
             {
                 if (Plugin.Conf.AdvancedSetting.ServerMaxPlayer.Edit)
@@ -616,7 +619,7 @@ namespace RFLobbyModifier.Utils
             }
             catch (Exception e)
             {
-                Logger.LogError($"[{Plugin.Inst.Name}] Error: " + e);
+                Logger.LogError($"[{Plugin.Inst.Name}] [ERROR] Details: " + e);
             }
         }
 
