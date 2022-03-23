@@ -6,7 +6,6 @@ namespace RFLobbyModifier.Models
         public ConfigEntrySingleString GameVersion { get; set; }
         public ConfigEntrySingleUInt GameVersionPacked { get; set; }
         public ConfigEntrySingleBoolean HasCheats { get; set; }
-        public bool HideRocket { get; set; }
         public bool IsVanilla { get; set; }
         public ConfigEntrySingleUInt MapVersion { get; set; }
         public ConfigEntrySingleString NetTransport { get; set; }

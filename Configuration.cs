@@ -52,8 +52,6 @@ namespace RFLobbyModifier
                 GameVersion = new ConfigEntrySingleString(false, "imaginary version"),
                 GameVersionPacked = new ConfigEntrySingleUInt(false, 69),
                 HasCheats = new ConfigEntrySingleBoolean(false, false),
-                HideRocket = false,
-                IsVanilla = false,
                 MapVersion = new ConfigEntrySingleUInt(false, 69),
                 NetTransport = new ConfigEntrySingleString(false, "sns"),
                 PluginFramework = new ConfigEntrySingleString(false, "rm"),

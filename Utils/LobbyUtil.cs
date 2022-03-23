@@ -230,11 +230,6 @@ namespace RFLobbyModifier.Utils
 
             #region Plugins
 
-            if (Plugin.Conf.AdvancedSetting.HideRocket)
-            {
-                SteamGameServer.SetBotPlayerCount(0);
-            }
-
             if (!Plugin.Conf.CommonSetting.LobbyPlugins.Hide)
             {
                 if (Plugin.Conf.CommonSetting.LobbyPlugins.Edit)
@@ -257,11 +252,6 @@ namespace RFLobbyModifier.Utils
             }
             else
             {
-                if (!Plugin.Conf.AdvancedSetting.HideRocket)
-                {
-                    SteamGameServer.SetBotPlayerCount(1);
-                }
-
                 if (!Plugin.Conf.CommonSetting.LobbyPlugins.Hide && !Plugin.Conf.CommonSetting.LobbyPlugins.Edit)
                 {
                     SteamGameServer.SetKeyValue("rocketplugins",
