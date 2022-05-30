@@ -290,23 +290,21 @@ namespace RFLobbyModifier.Utils
 
             if (Plugin.Conf.AdvancedSetting.Workshop.Hide)
             {
-                SteamGameServer.SetKeyValue("Browser_Workshop_Count", "0");
+                SteamGameServer.SetKeyValue("Mod_Count", "0");
             }
             else if (Plugin.Conf.AdvancedSetting.Workshop.Edit)
             {
                 var txt = string.Join(",", Plugin.Conf.AdvancedSetting.Workshop.Values);
-                SteamGameServer.SetKeyValue("Browser_Workshop_Count", ((txt.Length - 1) / 120 + 1).ToString());
-
+                SteamGameServer.SetKeyValue("Mod_Count", ((txt.Length - 1) / 120 + 1).ToString());
                 var line = 0;
                 for (var i = 0; i < txt.Length; i += 120)
                 {
                     var num6 = 120;
-
                     if (i + num6 > txt.Length)
                         num6 = txt.Length - i;
 
                     var pValue2 = txt.Substring(i, num6);
-                    SteamGameServer.SetKeyValue("Browser_Workshop_Line_" + line, pValue2);
+                    SteamGameServer.SetKeyValue("Mod_" + line, pValue2);
                     line++;
                 }
             }
@@ -316,19 +314,20 @@ namespace RFLobbyModifier.Utils
             #region Configuration
 
             if (Plugin.Conf.CommonSetting.LobbyConfiguration.Hide)
-                SteamGameServer.SetKeyValue("Browser_Config_Count", "0");
+                SteamGameServer.SetKeyValue("Cfg_Count", "0");
+            
             if (Plugin.Conf.CommonSetting.LobbyConfiguration.Edit)
             {
                 var configurationCount = Plugin.Conf.CommonSetting.LobbyConfiguration.Values.Length;
                 var i = 0;
                 while (i < configurationCount)
                 {
-                    SteamGameServer.SetKeyValue("Browser_Config_" + i.ToString(CultureInfo.InvariantCulture),
+                    SteamGameServer.SetKeyValue("Cfg_" + i.ToString(CultureInfo.InvariantCulture),
                         Plugin.Conf.CommonSetting.LobbyConfiguration.Values[i]);
                     i++;
                 }
 
-                SteamGameServer.SetKeyValue("Browser_Config_Count", i.ToString(CultureInfo.InvariantCulture));
+                SteamGameServer.SetKeyValue("Cfg_Count", i.ToString(CultureInfo.InvariantCulture));
             }
 
             #endregion

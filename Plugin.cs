@@ -16,7 +16,7 @@ namespace RFLobbyModifier
     {
         private static int Major = 1;
         private static int Minor = 0;
-        private static int Patch = 2;
+        private static int Patch = 3;
         
         internal ServerModel OrigServerModel;
         internal GameTagsModel OrigGameTagsModel;
